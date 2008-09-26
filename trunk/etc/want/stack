@@ -1,0 +1,13 @@
+
+---| stack |-----------------------------------------
+pushed[0] = 5
+pushed[1] = mon
+pushed[2] = tue
+pushed[3] = wed
+pushed[4] = thu
+pushed[5] = fri
+after popping [fri] a[0]=4
+after popping [thu] a[0]=3
+after popping [wed] a[0]=2
+after popping [tue] a[0]=1
+after popping [mon] a[0]=0

@@ -1,0 +1,9 @@
+
+---| sample |-----------------------------------------
+input= mon,2,tue,4,wed,8,thu,1,fri,1
+
+  15 thu
+  17 fri
+  35 mon
+  60 tue
+ 129 wed
