@@ -6,7 +6,7 @@ Tmp=    $G/tmp
 Want=   $G/var/want
 Dirs=   $G $(Tmp) $G/var $(Want) 
 Dirp=   if [ ! -d $d ]; then  mkdir $d; fi;
-This=   nothing
+What=   nothing
 
 #### stuff to define awk usage
 Src=     -f $(subst awk , awk -f ,$(Lib)) \
@@ -45,7 +45,11 @@ profile: ready
 	$(MAKE) Run="$(Profile)" $(What)
 	@ cat $(Tmp)/profile.out 	
 
-nothing :; @ echo "usage: make [profile|test] What=something"
+# time "What" 
+time: ready 
+	@ $(MAKE) Run="time $(Run) " $(What)
+
+nothing :; @ echo "usage: make [profile|test|time] What=something"
 
 #### unit tests
 testEngine:   
