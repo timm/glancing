@@ -1,9 +1,9 @@
 #!/usr/bin/env make -f
-App= awk/code.awk
-Lib= awk/lib.awk
+App= lib/awk/code.awk lib/awk/dataflow.awk
+Lib= lib/awk/lib.awk
 Hi=  printf "\n---| $@ |-----------------------------------------\n"
 
-include mk/lib.mk
+include lib/mk/lib.mk
 
 # unwanted rules start with an upper case letter
 Seed  : ready; @ $(Hi); $(Run) 'BEGIN{ print seed()}'
@@ -27,3 +27,5 @@ sample : ready
 	  printf "input= $DEg\n\n" ; \
 	  $(Run) 'BEGIN{srand(1); _sample()}' Eg=$DEg \
       | sort | uniq -c | sort -n
+
+circle : ready;  @ $(Hi); $(Run) 'BEGIN{ _circle()}'

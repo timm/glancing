@@ -9,8 +9,8 @@ Dirp=   if [ ! -d $d ]; then  mkdir $d; fi;
 What=   nothing
 
 #### stuff to define awk usage
-Src=     -f $(subst awk , awk -f ,$(Lib)) \
-		 -f $(subst awk , awk -f ,$(App)) \
+Src=     -f $(subst awk ,awk -f ,$(Lib)) \
+		 -f $(subst awk ,awk -f ,$(App)) \
 		 --source 
 Run=     gawk $(Src)
 Debug=   pgawk --dump-variables=$(Tmp)/vars.out $(Src)
