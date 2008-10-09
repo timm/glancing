@@ -46,6 +46,15 @@ function saya(s,a,    i,j,com) {
 function _saya(  a) { a[1]=2;a[3]=4; saya("ss",a) }
 
 #### simple array initialization
+function s2v(s,a,  n,tmp,i) {
+	n=split(s,tmp,",");
+	for(i=1;i<=n; i++) 
+		push(a,tmp[i])
+}
+function _s2v(  a) {
+	s2v("mon,2,tue,4,wed,8,thu,1,fri,1",a);
+	saya("a",a)
+}
 function s2a(s,a,  n,tmp,i) {
 	n=split(s,tmp,",");
 	for(i=1;i<=n; i += 2) 
