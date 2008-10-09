@@ -34,8 +34,10 @@ sample : ready
 circle : ready;  @ $(Hi); $(Run) 'BEGIN{ _circle()}'
 
 rank      : ready; @ $(Hi); $(Run) 'BEGIN{_rank()}' 
-rank115   : ready; @ $(Hi); $(Run) 'BEGIN{_rank()}' -v Eg="5,1,4,3,1"
-rank5     : ready; @ $(Hi); $(Run) 'BEGIN{_rank()}' -v Eg="4,5,3,1,2"
+rank5     : ready; @ $(Hi); $(Run) 'BEGIN{_rank()}'  -v Eg="4,5,3,1,2"
+rank14    : ready; @ $(Hi); $(Run) 'BEGIN {_rank()}' -v Eg="1,1,1,1,2,3,4"
+rank25    : ready; @ $(Hi); $(Run) 'BEGIN {_rank()}' -v Eg="2,4,5,5,5"
+rank115   : ready; @ $(Hi); $(Run) 'BEGIN{_rank()}'  -v Eg="5,1,4,3,1"
 rank10000 : ready; @ $(Hi); $(Run) 'BEGIN{_rank10000()}' 
 
-mwu : ready; @ $(Hi); $(Run) 'BEGIN{_mwu()}' 
+mwu       : ready; @ $(Hi); $(Run) 'BEGIN{_mwu()}' 
