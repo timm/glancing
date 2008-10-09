@@ -1,10 +1,11 @@
 #### standard stuff
 prefix= $(HOME)/opt/
+bindir= $(HOME)/opt/bin
 G=      $(prefix)glance
 D=      $$
 Tmp=    $G/tmp
 Want=   $G/var/want
-Dirs=   $G $(Tmp) $G/var $(Want) 
+Dirs=   $(prefix) $(bindir) $G $(Tmp) $G/var $(Want)  
 Dirp=   if [ ! -d $d ]; then  mkdir $d; fi;
 What=   nothing
 
@@ -16,8 +17,15 @@ Run=     gawk $(Src)
 Debug=   pgawk --dump-variables=$(Tmp)/vars.out $(Src)
 Profile= pgawk --profile=$(Tmp)/profile.out     $(Src)
 
+#### bundle
+all : ready $(bindir)/$(This)
+
+$(bindir)/$(This) : $(Lib) $(App)
+	@ (echo "#!`which gawk` -f "; cat $(Lib) $(App)) > $@
+	@ chmod +x $@ ; echo $@
+
 #### run all tests
-all  :;  @$(foreach x, $(shell $(MAKE) rules),$(MAKE) $x;)
+check:;  @$(foreach x, $(shell $(MAKE) rules),$(MAKE) $x;)
 rules:;  @ gawk -F\: '/^[a-z].*:/ {print $D1}' Makefile 
 tests: dirs
 	@ $(MAKE) testEngine | tee $(Tmp)/tests.out
