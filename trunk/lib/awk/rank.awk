@@ -51,6 +51,8 @@ function mwu(a,b,conf,    crit,i,na,nb,data,n,ranks,tab,\
 	for(i in b) { nb++; push(data,b[i]) }
 	n = na + nb
 	rank(data,ranks)
+	for(i in ranks) print i, ranks[i]
+	return 0 
 	for(i in a) { tab += ranks[a[i]]; ta += ranks[a[i]] } 
 	for(i in b) { tab += ranks[b[i]]; tb += ranks[b[i]] }
 	sigma = sqrt(na*nb*(n+1)/12)
@@ -66,5 +68,11 @@ function mwu(a,b,conf,    crit,i,na,nb,data,n,ranks,tab,\
 function _mwu(   a,b) {
 	s2v(Eg1?Eg1:"4.6,4.7,4.9,5.1,5.2,5.5,5.8,6.1,6.5,6.5,7.2",a)
 	s2v(Eg2?Eg2:"5.2,5.3,5.4,5.6,6.2,6.3,6.8,7.7,8.0,8.1"    ,b)
+	print mwu(a,b)
+}
+
+function _mwu1(   a,b) {
+	s2v(Eg1?Eg1:"3,4,2,6,2,5",a)
+	s2v(Eg2?Eg2:"9,7,5,20,6,8"    ,b)
 	print mwu(a,b)
 }
