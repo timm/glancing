@@ -1,0 +1,17 @@
+
+---| align |-----------------------------------------
+   SAMPLE OF USING ALIGN,       c4.5,     c4.5+m,     c4.5cf
+          adult (sample),      0.763,      0.768,      0.771
+           breast cancer,      0.599,      0.591,      0.590
+ breast cancer wisconsin,      0.954,      0.971,      0.968
+                     cmc,      0.628,      0.661,      0.654
+              ionosphere,      0.882,      0.888,      0.886
+                    iris,      0.936,      0.931,      0.916
+         liver disorders,      0.661,      0.668,      0.609
+             lung cancer,      0.583,      0.583,      0.563
+            lymphography,      0.775,      0.838,      0.866
+                mushroom,      1.000,      1.000,      1.000
+           primary tumor,      0.940,      0.962,      0.965
+                   rheum,      0.619,      0.666,      0.614
+                  voting,      0.972,      0.981,      0.975
+                    wine,      0.957,      0.978,      0.946

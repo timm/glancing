@@ -11,9 +11,16 @@ include lib/mk/lib.mk
 Seed  : ready; @ $(Hi); $(Run) 'BEGIN{ print seed()}'
 
 # "wanted" rules; i.e. with desired outputs cached in etc/want
+integer   : ready; @ $(Hi); $(Run) 'BEGIN{ print 21 ~ Number}'
+real      : ready; @ $(Hi); $(Run) 'BEGIN{ print 21.01 ~ Number}'
+notNum: ready; @ $(Hi); $(Run) 'BEGIN{ print "a" ~ Number}'
 saya  : ready; @ $(Hi); $(Run) 'BEGIN{ _saya()}'
 s2a   : ready; @ $(Hi); $(Run) 'BEGIN{ _s2a()}'
 s2v   : ready; @ $(Hi); $(Run) 'BEGIN{ _s2v()}'
+s2m   : ready; @ $(Hi); $(Run) 'BEGIN{  _s2m() }'
+s2nm  : ready; @ $(Hi); $(Run) 'BEGIN{  _s2nm() }'
+align : ready; @ $(Hi); $(Run) 'BEGIN{ OFS=","; _align() }'
+
 stack : ready; @ $(Hi); $(Run) 'BEGIN{ _stack()}'
 
 cdf : ready
@@ -31,13 +38,12 @@ sample : ready
 	  $(Run) 'BEGIN{srand(1); _sample()}' Eg=$DEg \
       | sort | uniq -c | sort -n
 
-circle : ready;  @ $(Hi); $(Run) 'BEGIN{ _circle()}'
-
 rank      : ready; @ $(Hi); $(Run) 'BEGIN{_rank()}' 
 rank5     : ready; @ $(Hi); $(Run) 'BEGIN{_rank()}'  -v Eg="4,5,3,1,2"
 rank14    : ready; @ $(Hi); $(Run) 'BEGIN {_rank()}' -v Eg="1,1,1,1,2,3,4"
 rank25    : ready; @ $(Hi); $(Run) 'BEGIN {_rank()}' -v Eg="2,4,5,5,5"
 rank115   : ready; @ $(Hi); $(Run) 'BEGIN{_rank()}'  -v Eg="5,1,4,3,1"
-rank10000 : ready; @ $(Hi); $(Run) 'BEGIN{_rank10000()}' 
+rank10000 : ready; @ $(Hi); $(Run) 'BEGIN{_rank10000(1)}' 
 
 mwu       : ready; @ $(Hi); $(Run) 'BEGIN{_mwu()}' 
+frt       : ready; @ $(Hi); $(Run) 'BEGIN{_frt()}' 
