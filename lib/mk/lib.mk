@@ -33,13 +33,16 @@ tests: dirs
 
 #### install stuff
 install: ready
-	@ cp etc/want $(Want)
+	@ cp  etc/want/* $(Want)
+
+commit : 
+	cp $(Want)/* etc/want ; svn add etc/want/* ; svn commit
 
 #### set up stuff
-ready: dirs files
+ready: dirs files 
 
 dirs  :; @ $(foreach d, $(Dirs), $(Dirp))
-files :  $(Lib) $(App)
+files :  $(Lib) $(App) tags
 	@ touch $(Tmp)/profile.awk
 
 #### generic stuff
@@ -61,12 +64,21 @@ nothing :; @ echo "usage: make [profile|test|time] What=something"
 
 #### unit tests
 testEngine:   
-	@$(foreach x, $(shell $(MAKE) rules),$(MAKE) test What=$x;) 
+	 @ $(foreach x, $(shell $(MAKE) rules), $(MAKE) test What=$x;) 
 
 test : $(Want)/$(What)
-	@ $(MAKE) $(What) > $(Tmp)/$(What)
-	@ if   diff -s $(Tmp)/$(What) $< > /dev/null ; then \
+	 @ $(MAKE) $(What) > $(Tmp)/$(What)
+	 @ if   diff -s $(Tmp)/$(What) $< > /dev/null ; then \
            echo PASSED $(What) ; \
       else echo FAILED $(What), see got $(Tmp)/$(What); fi\
 
 want :; @ $(MAKE) $(What) | tee $(Want)/$(What)
+fail :; @ echo faILuRE >  $(Want)/$(What)
+wantall : 
+	@$(foreach x, $(shell $(MAKE) rules),$(MAKE) want What=$x;) 
+
+##### tags
+# for CTRL-] and CTRL-T support, add 'set tags $G/var/tags' to $(HOME)/.vimrc"
+tags : dirs
+	@ ctags -o $(Tmp)/tags lib/awk/*.awk
+	@ gawk '{OFS="\t"; $D2=Pwd "/" $D2; print $D0}' Pwd=`pwd` $(Tmp)/tags > $G/var/tags 
