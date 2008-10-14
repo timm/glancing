@@ -70,10 +70,14 @@ function _mwu(   a,b) {
 	print mwu(a,b)
 }
 function brt(a,rows,cols,best,rest,tie,    b,mean,val,i,r,c,cd,crit,top) {
+	print 1
 	r = rows[0];
 	c = cols[0]
+	saym(a,r,c)
 	m2r(a,b,        r,c)
+	saym(b,r,c)
 	meanCols(b,mean,r,c)
+	saya("mean",mean)
 	val  = chi2f(r,c,mean)
 	crit = fcrit(c - 1, (r - 1)*(c - 1),95) 
 	if (val <= crit) { # accept
@@ -81,7 +85,8 @@ function brt(a,rows,cols,best,rest,tie,    b,mean,val,i,r,c,cd,crit,top) {
 			tie[i]++
 	} else { # reject
 		cd  = nemenyi(c,r,95)
-	    top = amax(mean)  - cd
+	    top = amax(mean)  - cd # ??? should be min
+		print "top " top
 		for(i in mean) 
 			mean[i] >= top ? best[i]++  : rest[i]++
 	}

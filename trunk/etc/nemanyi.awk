@@ -1,8 +1,11 @@
 function nemanyi(a,      rows, cols) { 
 	s2nm(nemanyiStr(), a, rows, cols,",")
 }
+
+# cols= confidence
+# rows=k
 function nemanyiStr() { return \
-	"4, 90         , 95         , 100, " \
+	"4, 90         , 95         , 99, " \
 	"2, 1.644853627, 1.959963985, 2.575829304, " \
 	"3, 2.052292731, 2.343700588, 2.913494392, " \
 	"4, 2.291341497, 2.569031777, 3.113250345, " \
