@@ -117,7 +117,7 @@ function s2nm(s,a,rows,cols,   sep,\
 	sep=sep?sep:FS
 	n=split(s,tmp,sep);
 	max=tmp[1];
-	for(i=2;i<=max;i++) push(cols,tmp[i])
+	for(i=1;i<=max;i++) push(cols,tmp[i])
 	row=1;
 	for(i=1;i<=n;i++) {
 		col++
@@ -150,7 +150,7 @@ function _egString1() {
 			"voting                  ,0.972  ,0.981  ,0.975  ,0.975  ,"\
 			"wine                    ,0.957  ,0.978  ,0.946  ,0.97   "
 }
-function align(a,nrows,ncols,  pad,fmt,\
+function saym(a,nrows,ncols,  pad,fmt,\
                                tmp,i,b,max,row,col,sep,str) {
 	pad=pad?pad:1;
 	for(col=1;col<=ncols;col++)
@@ -173,8 +173,8 @@ function align(a,nrows,ncols,  pad,fmt,\
 		print str
 	}
 }
-function _align(    a,rows,cols) {
+function _saym(    a,rows,cols) {
 	s2nm(_egString1(),a,rows,cols,",");
-	a[1,1]="SAMPLE OF USING ALIGN";
-	align(a,rows[0],cols[0],1,"%10.3f")
+	a[1,1]="SAMPLE OF USING saym";
+	saym(a,rows[0],cols[0],1,"%10.3f")
 }

@@ -69,7 +69,7 @@ function _mwu(   a,b) {
 	s2v(Eg2?Eg2:"5.2,5.3,5.4,5.6,6.2,6.3,6.8,7.7,8.0,8.1"    ,b)
 	print mwu(a,b)
 }
-function frt(a,rows,cols,best,rest,tie,    b,mean,val,i,r,c,cd,crit,top) {
+function brt(a,rows,cols,best,rest,tie,    b,mean,val,i,r,c,cd,crit,top) {
 	r = rows[0];
 	c = cols[0]
 	m2r(a,b,        r,c)
@@ -83,14 +83,14 @@ function frt(a,rows,cols,best,rest,tie,    b,mean,val,i,r,c,cd,crit,top) {
 		cd  = nemenyi(c,r,95)
 	    top = amax(mean)  - cd
 		for(i in mean) 
-			(mean[i] >= top) ? best[i]++  : rest[i]++
+			mean[i] >= top ? best[i]++  : rest[i]++
 	}
 }
-function _frt(a,rows,cols) {
+function _brt(a,rows,cols) {
 	s2m(_egString1(),a,rows,cols,",");
-	frt(a,rows,cols,best,rest,tie)
-	saya("first",first)
+	brt(a,rows,cols,best,rest,tie)
 	saya("best",best)
+	saya("rest",rest)
 	saya("tie",tie)
 }
 #### m2r
