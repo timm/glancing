@@ -19,7 +19,7 @@ s2a   : ready; @ $(Hi); $(Run) 'BEGIN{ _s2a()}'
 s2v   : ready; @ $(Hi); $(Run) 'BEGIN{ _s2v()}'
 s2m   : ready; @ $(Hi); $(Run) 'BEGIN{  _s2m() }'
 s2nm  : ready; @ $(Hi); $(Run) 'BEGIN{  _s2nm() }'
-align : ready; @ $(Hi); $(Run) 'BEGIN{ OFS=","; _align() }'
+saym  : ready; @ $(Hi); $(Run) 'BEGIN{ OFS=","; _saym() }'
 
 stack : ready; @ $(Hi); $(Run) 'BEGIN{ _stack()}'
 
@@ -46,4 +46,12 @@ rank115   : ready; @ $(Hi); $(Run) 'BEGIN{_rank()}'  -v Eg="5,1,4,3,1"
 rank10000 : ready; @ $(Hi); $(Run) 'BEGIN{_rank10000(1)}' 
 
 mwu       : ready; @ $(Hi); $(Run) 'BEGIN{_mwu()}' 
-frt       : ready; @ $(Hi); $(Run) 'BEGIN{_frt()}' 
+brt       : ready; @ $(Hi); $(Run) 'BEGIN{_brt()}' 
+ 
+nemanyi : ready 
+	@$(Hi);
+	@gawk -f etc/nemanyi.awk $(Src) 'BEGIN{nemanyi(a,r,c); saym(a,r[0],c[0])}' 
+ 
+f : ready 
+	@$(Hi);
+	@gawk -f etc/f.awk      $(Src) 'BEGIN{print fStr(); f(a,r,c); saym(a,r[0],c[0]) }'
