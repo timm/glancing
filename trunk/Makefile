@@ -1,7 +1,7 @@
 #!/usr/bin/env make -f
 Hi=  printf "\n---| $@ |-----------------------------------------\n"
 
-include lib.mk
+include lib/mk/lib.mk
 
 # unwanted rules start with an upper case letter
 Seed  : ready; @ $(Hi); $(Run) 'BEGIN{ print seed()}'
